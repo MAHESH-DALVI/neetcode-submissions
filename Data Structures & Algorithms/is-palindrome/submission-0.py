@@ -1,0 +1,37 @@
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        left = 0
+        right = len(s) - 1
+
+        while left < right:
+
+            # Skip non-alphanumeric characters from left
+            while left < right and not s[left].isalnum():
+                left += 1
+
+            # Skip non-alphanumeric characters from right
+            while left < right and not s[right].isalnum():
+                right -= 1
+
+            # Compare characters (ignore case)
+            if s[left].lower() != s[right].lower():
+                return False
+
+            left += 1
+            right -= 1
+
+        return True
+
+
+# Test Input
+s = "Was it a car or a cat I saw?"
+
+# Create object
+sol = Solution()
+
+# Run function
+output = sol.isPalindrome(s)
+
+# Print Result
+print("Input:", s)
+print("Output:", output)
